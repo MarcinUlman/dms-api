@@ -16,10 +16,12 @@ public class Contract {
     @Embedded
     private Address address;
     @ManyToOne
+    @JoinColumn(name = "customerId")
     private Customer customer;
     @ManyToOne
+    @JoinColumn(name = "contracts")
     private Estimator estimator;
-    @OneToMany
+    @OneToMany(mappedBy = "contract")
     private Collection<Offer> offers;
     private int status; //status wykonaie przesłanie
 

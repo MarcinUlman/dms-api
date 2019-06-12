@@ -14,7 +14,7 @@ public class Department {
     @Embedded
     private Address address;
     private int phoneNumber;
-    @OneToMany
+    @OneToMany (mappedBy = "department")
     private Collection<Employee> employees;
 
 

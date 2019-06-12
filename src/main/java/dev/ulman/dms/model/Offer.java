@@ -13,8 +13,12 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long offerId;
     @ManyToOne
+    @JoinColumn(name = "contract_id")
     private Contract contract;
     @ManyToMany
+    @JoinTable(name = "offer_product",
+            joinColumns = {@JoinColumn(name = "offer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id")})
     private Collection<Product> products;
     private BigDecimal totalCost;
 

@@ -13,9 +13,10 @@ public class Customer {
     @Embedded
     private Address officeAddress;
     private int phoneNumber;
-    @OneToMany
+    @OneToMany (mappedBy = "customer")
     private Collection<Contract> contracts;
     @ManyToOne
+    @JoinColumn(name = "EmployeeId")
     private Trader trader;
 
     //Getters @ Setters--------------------->

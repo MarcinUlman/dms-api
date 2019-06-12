@@ -14,7 +14,7 @@ public class Supplier {
     @Embedded
     private Address address;
     private int phoneNumber;
-    @OneToMany
+    @OneToMany (mappedBy = "supplier")
     private Collection<Product> products;
 
     //Getters @ Setters--------------------->

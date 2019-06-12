@@ -1,13 +1,14 @@
 package dev.ulman.dms;
 
-import dev.ulman.dms.model.Address;
-import dev.ulman.dms.model.Product;
-import dev.ulman.dms.model.Supplier;
+import dev.ulman.dms.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class DemoHibernate {
@@ -47,6 +48,17 @@ public class DemoHibernate {
         p2.setSupplier(s1);
         s2.getProducts().add(p2);
 
+        Employee emp1 = new Estimator();
+        emp1.setName("Ela");
+        emp1.setSurname("Kowal");
+        emp1.setEmploymentDate(Timestamp.valueOf(LocalDateTime.now(ZoneId.of("PLT", ZoneId.SHORT_IDS))));
+
+        Employee emp2 = new Trader();
+        emp2.setSurname("Zrobowski");
+        emp2.setName("Jan");
+
+        emp2.setEmploymentDate(Timestamp.valueOf("2003-5-7 00:00:00"));
+
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
         Session session = sessionFactory.openSession();
@@ -55,10 +67,11 @@ public class DemoHibernate {
         session.save(s2);
         session.save(p1);
         session.save(p2);
+        session.save(emp1);
+        session.save(emp2);
         session.getTransaction().commit();
 
         session.close();
-
 
     }
 }

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Employee {
 
     @Id
@@ -13,9 +14,10 @@ public abstract class Employee {
     private String name;
     private String surname;
 
-    private Date employmenDate;
+    private Date employmentDate;
     private BigDecimal salary;
     @ManyToOne
+    @JoinColumn(name = "departmentId")
     private Department department;
     private int phoneNumber;
     private String email;
@@ -44,12 +46,12 @@ public abstract class Employee {
         this.surname = surname;
     }
 
-    public Date getEmploymenDate() {
-        return employmenDate;
+    public Date getEmploymentDate() {
+        return employmentDate;
     }
 
-    public void setEmploymenDate(Date employmenDate) {
-        this.employmenDate = employmenDate;
+    public void setEmploymentDate(Date employmentDate) {
+        this.employmentDate = employmentDate;
     }
 
     public BigDecimal getSalary() {

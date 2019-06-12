@@ -13,9 +13,10 @@ public class Product {
     private long productId;
     private String name;
     @ManyToOne
+    @JoinColumn(name = "supplierId")
     private Supplier supplier;
     private BigDecimal price;
-    @ManyToMany
+    @ManyToMany (mappedBy = "products")
     private Collection<Offer> offers;
 
 

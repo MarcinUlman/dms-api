@@ -9,7 +9,7 @@ import java.util.List;
 public class Trader extends Employee {
 
     private int level; //mlodszy specjalist, inzynier sprzedazy, dyrektor oddzilu
-    @OneToMany
+    @OneToMany (mappedBy = "trader")
     private Collection<Customer> customers;
 
 
