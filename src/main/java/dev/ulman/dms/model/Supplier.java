@@ -9,6 +9,7 @@ public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "supplier_id")
     private long supplierId;
     private String name;
     @Embedded

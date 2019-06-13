@@ -8,6 +8,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "customer_id")
     private long customerId;
     private String name;
     @Embedded
@@ -16,7 +17,7 @@ public class Customer {
     @OneToMany (mappedBy = "customer")
     private Collection<Contract> contracts;
     @ManyToOne
-    @JoinColumn(name = "EmployeeId")
+    @JoinColumn(name = "employee_id")
     private Trader trader;
 
     //Getters @ Setters--------------------->

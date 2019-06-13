@@ -10,16 +10,17 @@ public class Contract {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "contract_id")
     private long contractId;
     private String name;
     private int version;
     @Embedded
     private Address address;
     @ManyToOne
-    @JoinColumn(name = "customerId")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
     @ManyToOne
-    @JoinColumn(name = "contracts")
+    @JoinColumn(name = "estimator_id")
     private Estimator estimator;
     @OneToMany(mappedBy = "contract")
     private Collection<Offer> offers;

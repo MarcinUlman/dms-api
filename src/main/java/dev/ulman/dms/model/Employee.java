@@ -10,6 +10,7 @@ public abstract class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "employee_id")
     private long EmployeeId;
     private String name;
     private String surname;
@@ -17,7 +18,7 @@ public abstract class Employee {
     private Date employmentDate;
     private BigDecimal salary;
     @ManyToOne
-    @JoinColumn(name = "departmentId")
+    @JoinColumn(name = "department_id")
     private Department department;
     private int phoneNumber;
     private String email;

@@ -10,10 +10,11 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "product_id")
     private long productId;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "supplierId")
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
     private BigDecimal price;
     @ManyToMany (mappedBy = "products")

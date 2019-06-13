@@ -11,6 +11,7 @@ public class Offer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "offer_id")
     private long offerId;
     @ManyToOne
     @JoinColumn(name = "contract_id")

@@ -9,6 +9,7 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "department_id")
     private long departmentId;
     private String name;
     @Embedded
