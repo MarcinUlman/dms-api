@@ -3,7 +3,6 @@ package dev.ulman.dms.model;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Trader extends Employee {
@@ -26,7 +25,7 @@ public class Trader extends Employee {
         return customers;
     }
 
-    public void setCustomers(List<Customer> customers) {
+    public void setCustomers(Collection<Customer> customers) {
         this.customers = customers;
     }
 

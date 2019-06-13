@@ -14,7 +14,7 @@ public abstract class Employee {
     private long EmployeeId;
     private String name;
     private String surname;
-
+    @Column(name = "employment_date")
     private Date employmentDate;
     private BigDecimal salary;
     @ManyToOne

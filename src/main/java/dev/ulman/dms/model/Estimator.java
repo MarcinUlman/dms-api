@@ -1,11 +1,8 @@
 package dev.ulman.dms.model;
 
-import dev.ulman.dms.model.Employee;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Estimator extends Employee {
@@ -18,7 +15,7 @@ public class Estimator extends Employee {
         return contracts;
     }
 
-    public void setContracts(List<Contract> contracts) {
+    public void setContracts(Collection<Contract> contracts) {
         this.contracts = contracts;
     }
 }

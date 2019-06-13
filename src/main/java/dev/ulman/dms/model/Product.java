@@ -3,7 +3,6 @@ package dev.ulman.dms.model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Product {
@@ -59,7 +58,7 @@ public class Product {
         return offers;
     }
 
-    public void setOffers(List<Offer> offers) {
+    public void setOffers(Collection<Offer> offers) {
         this.offers = offers;
     }
 }

@@ -2,7 +2,6 @@ package dev.ulman.dms.model;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Department {

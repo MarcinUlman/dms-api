@@ -2,7 +2,6 @@ package dev.ulman.dms.model;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Supplier {
@@ -56,7 +55,7 @@ public class Supplier {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Collection<Product> products) {
         this.products = products;
     }
 }

@@ -3,7 +3,6 @@ package dev.ulman.dms.model;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Contract {
@@ -25,8 +24,9 @@ public class Contract {
     @OneToMany(mappedBy = "contract")
     private Collection<Offer> offers;
     private int status; //status wykonaie przesłanie
-
-    private Date createDate;
+    @Column(name = "created_date")
+    private Date createdDate;
+    @Column(name = "completed_date")
     private Date completedDate;
 
 
@@ -84,7 +84,7 @@ public class Contract {
         return offers;
     }
 
-    public void setOffers(List<Offer> offers) {
+    public void setOffers(Collection<Offer> offers) {
         this.offers = offers;
     }
 
@@ -96,12 +96,12 @@ public class Contract {
         this.status = status;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Date getCompletedDate() {

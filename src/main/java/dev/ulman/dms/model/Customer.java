@@ -12,12 +12,12 @@ public class Customer {
     private long customerId;
     private String name;
     @Embedded
-    private Address officeAddress;
+    private Address address;
     private int phoneNumber;
     @OneToMany (mappedBy = "customer")
     private Collection<Contract> contracts;
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "trader_id")
     private Trader trader;
 
     //Getters @ Setters--------------------->
@@ -37,12 +37,12 @@ public class Customer {
         this.name = name;
     }
 
-    public Address getOfficeAddress() {
-        return officeAddress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setOfficeAddress(Address officeAddress) {
-        this.officeAddress = officeAddress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public int getPhoneNumber() {
