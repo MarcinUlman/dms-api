@@ -29,6 +29,7 @@
         <mapping class="dev.ulman.dms.model.Employee"/>
         <mapping class="dev.ulman.dms.model.Estimator"/>
         <mapping class="dev.ulman.dms.model.Offer"/>
+        <mapping class="dev.ulman.dms.model.OfferDetails"/>
         <mapping class="dev.ulman.dms.model.Product"/>
         <mapping class="dev.ulman.dms.model.Supplier"/>
         <mapping class="dev.ulman.dms.model.Trader"/>

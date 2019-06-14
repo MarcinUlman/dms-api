@@ -7,7 +7,7 @@ import java.util.Collection;
 @Entity
 public class Estimator extends Employee {
 
-    @OneToMany (mappedBy = "contract_id")
+    @OneToMany (mappedBy = "estimator")
     private Collection<Contract> contracts;
 
     //Getters @ Setters--------------------->

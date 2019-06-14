@@ -16,11 +16,19 @@ public class Product {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
     private BigDecimal price;
-    @ManyToMany (mappedBy = "products")
-    private Collection<Offer> offers;
+    @OneToMany (mappedBy = "product")
+    private Collection<OfferDetails> offerDatails;
 
 
     //Getters @ Setters--------------------->
+
+    public Collection<OfferDetails> getOfferDatails() {
+        return offerDatails;
+    }
+
+    public void setOfferDatails(Collection<OfferDetails> offerDatails) {
+        this.offerDatails = offerDatails;
+    }
 
     public long getProductId() {
         return productId;
@@ -54,11 +62,4 @@ public class Product {
         this.price = price;
     }
 
-    public Collection<Offer> getOffers() {
-        return offers;
-    }
-
-    public void setOffers(Collection<Offer> offers) {
-        this.offers = offers;
-    }
 }
