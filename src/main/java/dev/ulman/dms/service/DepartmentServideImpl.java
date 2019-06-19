@@ -14,7 +14,7 @@ public class DepartmentServideImpl implements DepartmentService {
     private final DepartmentDao departmentDao;
 
     @Autowired
-    public DepartmentServideImpl(@Qualifier("fakeDao") DepartmentDao departmentDao) {
+    public DepartmentServideImpl(@Qualifier("DBconnection") DepartmentDao departmentDao) {
         this.departmentDao = departmentDao;
     }
 
