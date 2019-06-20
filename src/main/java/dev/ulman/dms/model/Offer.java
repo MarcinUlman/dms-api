@@ -5,6 +5,7 @@ import java.util.Collection;
 
 
 @Entity
+@Table(name = "offers")
 public class Offer {
 
     @Id

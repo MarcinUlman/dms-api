@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
+@Table(name = "contracts")
 public class Contract {
 
     @Id
