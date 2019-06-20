@@ -1,5 +1,7 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -15,7 +17,8 @@ public class Offer {
     @ManyToOne
     @JoinColumn(name = "contract_id")
     private Contract contract;
-    @OneToMany(mappedBy = "offer")
+    @JsonIgnore
+    @OneToMany(mappedBy = "offer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<OfferDetails> offerDatails;
 
 

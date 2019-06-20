@@ -1,5 +1,8 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -9,7 +12,8 @@ import java.util.Collection;
 @Table(name = "estimators")
 public class Estimator extends Employee {
 
-    @OneToMany (mappedBy = "estimator")
+    @JsonIgnore
+    @OneToMany (mappedBy = "estimator", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Contract> contracts;
 
     //Getters @ Setters--------------------->

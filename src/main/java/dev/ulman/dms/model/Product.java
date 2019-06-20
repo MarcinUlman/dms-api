@@ -1,5 +1,7 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -17,7 +19,8 @@ public class Product {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
     private BigDecimal price;
-    @OneToMany (mappedBy = "product")
+    @JsonIgnore
+    @OneToMany (mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<OfferDetails> offerDatails;
 
 

@@ -1,5 +1,8 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -10,7 +13,8 @@ import java.util.Collection;
 public class Trader extends Employee {
 
     private int level; //mlodszy specjalist, inzynier sprzedazy, dyrektor oddzilu
-    @OneToMany (mappedBy = "trader")
+    @JsonIgnore
+    @OneToMany (mappedBy = "trader", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Customer> customers;
 
 

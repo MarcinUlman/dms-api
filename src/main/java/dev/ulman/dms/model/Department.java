@@ -1,5 +1,7 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -15,7 +17,8 @@ public class Department {
     @Embedded
     private Address address;
     private int phoneNumber;
-    @OneToMany (mappedBy = "department")
+    @JsonIgnore
+    @OneToMany (mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Employee> employees;
 
 

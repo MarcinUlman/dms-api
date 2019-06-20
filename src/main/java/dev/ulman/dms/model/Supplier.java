@@ -1,5 +1,7 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -15,7 +17,8 @@ public class Supplier {
     @Embedded
     private Address address;
     private int phoneNumber;
-    @OneToMany (mappedBy = "supplier")
+    @JsonIgnore
+    @OneToMany (mappedBy = "supplier", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Product> products;
 
     //Getters @ Setters--------------------->
