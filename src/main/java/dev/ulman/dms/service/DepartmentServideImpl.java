@@ -2,6 +2,9 @@ package dev.ulman.dms.service;
 
 import dev.ulman.dms.dao.DepartmentDao;
 import dev.ulman.dms.model.Department;
+import dev.ulman.dms.model.Employee;
+import dev.ulman.dms.model.Estimator;
+import dev.ulman.dms.model.Trader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -19,7 +22,43 @@ public class DepartmentServideImpl implements DepartmentService {
     }
 
     @Override
-    public Collection<Department> gayAllDepartments() {
+    public Collection<Department> getAllDepartments() {
         return departmentDao.getAllDepartments();
     }
+
+    @Override
+    public Department getDepartmentById(long id) {
+        return departmentDao.getDepartmentById(id);
+    }
+
+    @Override
+    public void add(Department newDepartment) {
+        departmentDao.add(newDepartment);
+    }
+
+    @Override
+    public void deleteDepartment(long id) {
+        departmentDao.delete(id);
+    }
+
+    @Override
+    public void update(long id, Department incomingDepartment) {
+        departmentDao.update(id, incomingDepartment);
+    }
+
+    @Override
+    public Collection<Employee> getEmployees(long id) {
+        return departmentDao.getEmployees(id);
+    }
+
+    @Override
+    public Collection<Trader> getTraders(long id) {
+        return departmentDao.getTraders(id);
+    }
+
+    @Override
+    public Collection<Estimator> getEstimetors(long id) {
+        return departmentDao.getEstimetors(id);
+    }
+
 }

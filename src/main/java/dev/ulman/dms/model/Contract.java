@@ -1,10 +1,13 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 
 @Entity
+@Table(name = "contracts")
 public class Contract {
 
     @Id
@@ -21,7 +24,8 @@ public class Contract {
     @ManyToOne
     @JoinColumn(name = "estimator_id")
     private Estimator estimator;
-    @OneToMany(mappedBy = "contract")
+    @JsonIgnore
+    @OneToMany(mappedBy = "contract", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Offer> offers;
     private int status; //status wykonaie przesłanie
     @Column(name = "created_date")

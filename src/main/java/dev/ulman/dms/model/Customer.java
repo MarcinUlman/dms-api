@@ -1,9 +1,12 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "customers")
 public class Customer {
 
     @Id
@@ -14,7 +17,8 @@ public class Customer {
     @Embedded
     private Address address;
     private int phoneNumber;
-    @OneToMany (mappedBy = "customer")
+    @JsonIgnore
+    @OneToMany (mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Contract> contracts;
     @ManyToOne
     @JoinColumn(name = "trader_id")
