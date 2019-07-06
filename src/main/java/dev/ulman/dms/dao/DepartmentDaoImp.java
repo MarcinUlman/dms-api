@@ -12,12 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.Collection;
-import java.util.Optional;
 
 @Repository("DBconnection")
 public class DepartmentDaoImp implements DepartmentDao {
@@ -57,20 +55,6 @@ public class DepartmentDaoImp implements DepartmentDao {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-//        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-//        CriteriaQuery<Department> criteriaQuery = criteriaBuilder.createQuery(Department.class);
-//        Root<Department> root = criteriaQuery.from(Department.class);
-//
-//        criteriaQuery.where(criteriaBuilder.equal(root.get("departmentId"), id));
-//
-//        Query<Department> query = session.createQuery(criteriaQuery);
-//
-//        Department department;
-//        try {
-//           department = query.getSingleResult();
-//        } catch (NoResultException e){
-//            department = null;
-//        }
         Department department = session.get(Department.class, id);
         transaction.commit();
         return department;
@@ -119,23 +103,44 @@ public class DepartmentDaoImp implements DepartmentDao {
         if (department == null) return null;
         Collection<Employee> employees = department.getEmployees();
 
-        for (Employee e :employees
-             ) {
-            System.out.println(e.getName() + " " + e.getSurname());
-
-        }
-
+        transaction.commit();
         return employees;
     }
 
     @Override
     public Collection<Trader> getTraders(long id) {
-        return null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+
+        CriteriaQuery<Trader> criteriaQuery = criteriaBuilder.createQuery(Trader.class);
+        Root<Trader> traderRoot = criteriaQuery.from(Trader.class);
+        criteriaQuery.where(criteriaBuilder.equal(traderRoot.get("department"), id));
+
+        Query<Trader> query = session.createQuery(criteriaQuery);
+        Collection<Trader> traders = query.getResultList();
+        transaction.commit();
+
+        return traders;
     }
 
     @Override
     public Collection<Estimator> getEstimetors(long id) {
-        return null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+
+        CriteriaQuery<Estimator> criteriaQuery = criteriaBuilder.createQuery(Estimator.class);
+        Root<Estimator> estimatorRoot = criteriaQuery.from(Estimator.class);
+        criteriaQuery.where(criteriaBuilder.equal(estimatorRoot.get("department"), id));
+
+        Query<Estimator> query = session.createQuery(criteriaQuery);
+        Collection<Estimator> estimators = query.getResultList();
+
+        transaction.commit();
+        return estimators;
     }
 
 
