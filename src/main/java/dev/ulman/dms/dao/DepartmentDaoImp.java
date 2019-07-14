@@ -86,7 +86,7 @@ public class DepartmentDaoImp implements DepartmentDao {
     @Override
     public void update(long id, Department incomingDepartment) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.getTransaction();
+        Transaction transaction = session.beginTransaction();
 
         incomingDepartment.setDepartmentId(id);
         session.saveOrUpdate(incomingDepartment);

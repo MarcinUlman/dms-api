@@ -82,7 +82,7 @@ public class SupplierDaoImp implements SupplierDao {
     @Override
     public void update(long id, Supplier incomingSupplier) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.getTransaction();
+        Transaction transaction = session.beginTransaction();
 
         incomingSupplier.setSupplierId(id);
         session.saveOrUpdate(incomingSupplier);

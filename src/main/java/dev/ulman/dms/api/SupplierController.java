@@ -1,6 +1,9 @@
 package dev.ulman.dms.api;
 
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import dev.ulman.dms.model.Product;
 import dev.ulman.dms.model.Supplier;
 import dev.ulman.dms.service.SupplierService;
