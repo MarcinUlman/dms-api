@@ -19,5 +19,6 @@ public interface EmployeeDao {
 
     void delete(long id);
 
-    void update(long id, Employee incomingEmployee);
+    void updateTrader(long id, Trader incomingEmployee);
+    void updateEstimator(long id, Estimator incomingEmployee);
 }

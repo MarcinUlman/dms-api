@@ -98,12 +98,22 @@ public class EmployeeDaoImp implements EmployeeDao {
 
     @Override
     public void addTrader(Trader trader) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        session.save(trader);
+
+        transaction.commit();
     }
 
     @Override
     public void addEstimator(Estimator estimator) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        session.save(estimator);
+
+        transaction.commit();
     }
 
     @Override
@@ -119,7 +129,18 @@ public class EmployeeDaoImp implements EmployeeDao {
     }
 
     @Override
-    public void update(long id, Employee incomingEmployee) {
+    public void updateTrader(long id, Trader incomingEmployee) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        incomingEmployee.setEmployeeId(id);
+        session.saveOrUpdate(incomingEmployee);
+
+        transaction.commit();
+    }
+
+    @Override
+    public void updateEstimator(long id, Estimator incomingEmployee) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 

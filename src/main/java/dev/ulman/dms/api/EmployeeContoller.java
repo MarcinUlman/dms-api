@@ -42,7 +42,7 @@ public class EmployeeContoller {
         return new ResponseEntity<Collection<Estimator>>(estimators, HttpStatus.OK);
     }
 
-    @GetMapping(path = {"id"})
+    @GetMapping(path = "{id}")
     public ResponseEntity<?> getEmployeeById(@PathVariable("id") long id){
         Employee employee = employeeService.getEmployeeById(id);
         if(employee == null)
@@ -56,7 +56,7 @@ public class EmployeeContoller {
         return new ResponseEntity<Trader>(trader,HttpStatus.CREATED);
     }
 
-    @PostMapping(path = "estimator")
+    @PostMapping(path = "estimators")
     public ResponseEntity<?> createNewEstimator(@RequestBody Estimator estimator){
         employeeService.addEstimator(estimator);
         return new ResponseEntity<Employee>(estimator, HttpStatus.CREATED);
@@ -69,11 +69,15 @@ public class EmployeeContoller {
         return new ResponseEntity<>("Employee is no longer in the database", HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(path = "{id")
-    public ResponseEntity<?> updeteEmployee(@PathVariable("id") long id, @RequestBody Employee incomingEmployee){
-        employeeService.update(id, incomingEmployee);
+    @PutMapping(path = "traders/{id}")
+    public ResponseEntity<?> updeteTrader(@PathVariable("id") long id, @RequestBody Trader incomingEmployee){
+        employeeService.updateTrader(id, incomingEmployee);
         return new ResponseEntity<Employee>(incomingEmployee, HttpStatus.OK);
     }
 
-
+    @PutMapping(path = "estimators/{id}")
+    public ResponseEntity<?> updeteEstimator(@PathVariable("id") long id, @RequestBody Estimator incomingEmployee){
+        employeeService.updateEstimator(id, incomingEmployee);
+        return new ResponseEntity<Employee>(incomingEmployee, HttpStatus.OK);
+    }
 }

@@ -55,7 +55,11 @@ public class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    public void update(long id, Employee incomingEmployee) {
-        employeeDao.update(id, incomingEmployee);
+    public void updateTrader(long id, Trader incomingEmployee) {
+        employeeDao.updateTrader(id, incomingEmployee);
+    }
+    @Override
+    public void updateEstimator(long id, Estimator incomingEmployee) {
+        employeeDao.updateEstimator(id, incomingEmployee);
     }
 }
