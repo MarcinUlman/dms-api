@@ -28,7 +28,7 @@ public class Contract {
     @OneToMany(mappedBy = "contract", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Offer> offers;
     private int status; //status wykonaie przesłanie
-    @Column(name = "created_date")
+    @Column(name = "created_date", updatable = false)
     private Date createdDate;
     @Column(name = "completed_date")
     private Date completedDate;

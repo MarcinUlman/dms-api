@@ -18,7 +18,7 @@ public class Offer {
     @ManyToOne
     @JoinColumn(name = "contract_id")
     private Contract contract;
-//    @JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "offer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<OfferDetails> offerDatails;
 
