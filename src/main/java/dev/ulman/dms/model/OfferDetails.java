@@ -1,5 +1,7 @@
 package dev.ulman.dms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -10,6 +12,7 @@ import java.io.Serializable;
 @Table(name = "offer_details")
 public class OfferDetails implements Serializable {
 
+    @JsonIgnore
     @Id
     @ManyToOne
     private Offer offer;

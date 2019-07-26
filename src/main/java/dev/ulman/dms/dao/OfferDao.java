@@ -9,7 +9,6 @@ public interface OfferDao {
     void add(Offer offer);
     void delete(long id);
 
-    void addProductToOffer(long offerId, OfferDetails offerDetails);
-    void removeProductFromOffer(long offerId, long productId);
+    void removeProductFromOffer(long offerId, OfferDetails offerDetails);
     void changeQuantityOfProductInOffer(long offerId, OfferDetails offerDetails);
 }

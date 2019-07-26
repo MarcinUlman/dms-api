@@ -5,10 +5,15 @@ import dev.ulman.dms.model.OfferDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 @Repository
 public class OfferDaoImp implements OfferDao {
@@ -56,24 +61,23 @@ public class OfferDaoImp implements OfferDao {
     }
 
     @Override
-    public void addProductToOffer(long offerId, OfferDetails offerDetails){
+    public void removeProductFromOffer(long offerId, OfferDetails offerDetails) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Offer offer = session.get(Offer.class, offerId);
-        offerDetails.setOffer(offer);
-        offer.getOfferDatails().add(offerDetails);
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<OfferDetails> criteriaQuery = criteriaBuilder.createQuery(OfferDetails.class);
+        Root<OfferDetails> root = criteriaQuery.from(OfferDetails.class);
 
-        transaction.commit();
-    }
+        criteriaQuery.where(
+                criteriaBuilder.equal(root.get("offer"), offerId),
+                criteriaBuilder.equal(root.get("product"), offerDetails.getProduct()));
 
-    @Override
-    public void removeProductFromOffer(long offerId, long productId) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Query<OfferDetails> query = session.createQuery(criteriaQuery);
+        OfferDetails foundOfferDetails = query.getSingleResult();
 
-        Offer offer = session.get(Offer.class, offerId);
-        offer.getOfferDatails().removeIf(x -> x.getProduct().equals(productId));
+        foundOfferDetails.setOffer(session.get(Offer.class, offerId));
+        session.delete(foundOfferDetails);
 
         transaction.commit();
     }
@@ -83,11 +87,24 @@ public class OfferDaoImp implements OfferDao {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Offer offer = session.get(Offer.class, offerId);
-        offer.getOfferDatails().removeIf(x -> x.getProduct().equals(offerDetails.getProduct()));
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<OfferDetails> criteriaQuery = criteriaBuilder.createQuery(OfferDetails.class);
+        Root<OfferDetails> root = criteriaQuery.from(OfferDetails.class);
 
-        offerDetails.setOffer(offer);
-        offer.getOfferDatails().add(offerDetails);
+        criteriaQuery.where(
+                criteriaBuilder.equal(root.get("offer"), offerId),
+                criteriaBuilder.equal(root.get("product"), offerDetails.getProduct()));
+
+        Query<OfferDetails> query = session.createQuery(criteriaQuery);
+
+        try {
+            OfferDetails foundOfferDetails = query.getSingleResult();
+            foundOfferDetails.setQuantity(offerDetails.getQuantity());
+            session.saveOrUpdate(foundOfferDetails);
+        } catch (NoResultException e) {
+            offerDetails.setOffer(session.get(Offer.class, offerId));
+            session.save(offerDetails);
+        }
 
         transaction.commit();
     }

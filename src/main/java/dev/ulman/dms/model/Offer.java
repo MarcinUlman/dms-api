@@ -14,10 +14,11 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "offer_id")
     private long offerId;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "contract_id")
     private Contract contract;
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "offer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<OfferDetails> offerDatails;
 
