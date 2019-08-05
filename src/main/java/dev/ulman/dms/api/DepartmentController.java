@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RequestMapping("api/depatrments")
+@RequestMapping("api/departments")
 @Controller
 public class DepartmentController {
 
@@ -26,19 +27,27 @@ public class DepartmentController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllDepartments(){
+    public String getAllDepartments(Model model){
         Collection<Department> departments = departmentService.getAllDepartments();
-        return new ResponseEntity<Collection<Department>>(departments, HttpStatus.OK);
+//        return new ResponseEntity<Collection<Department>>(departments, HttpStatus.OK);
+        model.addAttribute("departments", departments);
+
+        return "departmentsList";
     }
 
     @GetMapping(path = "{id}")
-    public ResponseEntity<?> getDepartmentById(@PathVariable("id") long id){
+    public String getDepartmentById(@PathVariable("id") long id, Model model){
         Department department = departmentService.getDepartmentById(id);
 
         if (department == null)
-            return new ResponseEntity<>("Department dose not exist", HttpStatus.NOT_FOUND);
+//            return new ResponseEntity<>("Department dose not exist", HttpStatus.NOT_FOUND);
+            return "404";
 
-        return new ResponseEntity<Department>(department, HttpStatus.OK);
+//        return new ResponseEntity<Department>(department, HttpStatus.OK);
+
+        model.addAttribute("department", department);
+
+        return "department";
     }
 
     @PostMapping

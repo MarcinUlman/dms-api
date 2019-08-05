@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<body>
+<div layout:fragment="content" class="container">
+    <span th:text="${department.departmentId}">department id</span>
+    <span th:text="${department.name}">department name</span>
+    <span th:text="${department.address.street} + ' ' + ${department.address.addressLine2} + ' ' +
+                                        ${department.address.postCode} + ' ' + ${department.address.city} + ' ' +
+                                        ${department.address.state}">department address</span>
+    <span th:text="${department.phoneNumber}">department phoneNumber</span>
+</div>
+</body>
+</html>
