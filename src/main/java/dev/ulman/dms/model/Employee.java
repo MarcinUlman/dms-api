@@ -22,6 +22,8 @@ public abstract class Employee {
     private Department department;
     private int phoneNumber;
     private String email;
+    @OneToOne
+    private User user;
 
     public long getEmployeeId() {
         return EmployeeId;
@@ -85,5 +87,13 @@ public abstract class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

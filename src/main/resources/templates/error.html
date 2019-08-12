@@ -7,13 +7,14 @@
 
 <body>
     <div layout:fragment="content" class="container">
-        <h1>
-            I am sorry, something went wrong!
+        <h1 class="pageError">
+            Error
         </h1>
-
-        <form>
-            <input type="button" value="Go back!" onclick="history.back()">
-        </form>
+        <h2 class="pageError">
+            I am sorry, something went wrong!
+        <br>
+            <a href="#" class="backButton" onclick="history.back()">Go back!!</a>
+        </h2>
     </div>
 </body>
 </html>

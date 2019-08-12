@@ -4,17 +4,17 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <link href="../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap&subset=latin-ext" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../static/style.css" th:href="@{/style.css}" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap&subset=latin-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
     <div class="page-container">
-        <div class="header">
-            this is header
-        </div>
-        <div class="sidenav">
+        <header class="header">
+            <div th:replace="fragments/header :: header">&copy The Static Header</div>
+        </header>
+        <nav class="sidenav">
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#clients">Clients</a>
@@ -36,13 +36,13 @@
                 <a href="#">Link 3</a>
             </div>
             <a href="#contact">Search</a>
-        </div>
-        <div class="main">
+        </nav>
+        <main class="main">
             <div layout:fragment="content"></div>
-        </div>
-        <div class="footer">
-            this is footer
-        </div>
+        </main>
+        <footer class="footer">
+            <div th:replace="fragments/footer :: footer">&copy; 2019 The Static Templates</div>
+        </footer>
     </div>
 
 
