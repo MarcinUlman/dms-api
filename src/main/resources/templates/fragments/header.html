@@ -1,15 +1,21 @@
 <!DOCTYPE HTML>
 <html lang="pl"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body>
 <div th:fragment="header" class="container">
-    <form name="f" th:action="@{/logout}" method="post">
-        <div class="form-actions" style="margin-top: 12px;">
-            <button type="submit" class="btn btn-success" >Log out</button>
-        </div>
-    </form>
+    <div style="display: inline-block; margin-right: 20px;">
+        Logged user: <span sec:authentication="name">Bob</span>
+    </div>
+    <div style="display: inline-block;">
+        <form name="f" th:action="@{/logout}" method="post">
+            <div class="form-actions" style="margin-top: 12px;">
+                <button type="submit" class="btn btn-success" >Log out</button>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
