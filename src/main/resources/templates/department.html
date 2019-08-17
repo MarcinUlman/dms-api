@@ -6,7 +6,7 @@
       layout:decorate="~{layout}">
 
 <body>
-<div layout:fragment="content" class="container">
+<div layout:fragment="content">
     <span th:text="${department.departmentId}">department id</span>
     <span th:text="${department.name}">department name</span>
     <span th:text="${department.address.street} + ' ' + ${department.address.addressLine2} + ' ' +

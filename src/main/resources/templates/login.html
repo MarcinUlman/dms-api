@@ -1,5 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="layout :: fileHeader">
     <title>Log in</title>
 </head>
 <body>
@@ -46,5 +46,6 @@
         </div>
     </div>
 </div>
+<span th:insert="layout :: scriptInput"></span>
 </body>
 </html>
