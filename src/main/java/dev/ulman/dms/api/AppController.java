@@ -21,8 +21,5 @@ public class AppController {
     public String login(){
         return "login";
     }
-//    @GetMapping(value = "/error")
-//    public String loadErrorPage(){
-//        return "error";
-//    }
+
 }
