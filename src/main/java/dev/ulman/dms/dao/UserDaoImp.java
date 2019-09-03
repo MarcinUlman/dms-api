@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Repository
 public class UserDaoImp implements UserDao {
@@ -24,6 +25,26 @@ public class UserDaoImp implements UserDao {
             throw new NullPointerException("factory is not a hibernate factory");
         }
         this.sessionFactory = factory.unwrap(SessionFactory.class);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> root = criteriaQuery.from(User.class);
+
+        criteriaQuery.select(root);
+
+        Query<User> query = session.createQuery(criteriaQuery);
+
+        List<User> users = query.getResultList();
+
+        transaction.commit();
+        session.close();
+        return users;
     }
 
     @Override

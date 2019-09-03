@@ -41,7 +41,7 @@ public class DepartmentController {
 
         if (department == null)
 //            return new ResponseEntity<>("Department dose not exist", HttpStatus.NOT_FOUND);
-            return "404";
+            return "error/error-404";
 
 //        return new ResponseEntity<Department>(department, HttpStatus.OK);
 

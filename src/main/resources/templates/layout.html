@@ -2,6 +2,7 @@
 <html lang="pl"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head th:fragment="fileHeader">
     <meta charset="utf-8">
@@ -33,8 +34,20 @@
             <div class="mb-1 navbar navbar-expand-lg navbar-dark lighten-1 sticky-top header-bg-color" th:insert="fragments/header :: header">The Static Header</div>
         </header>
         <nav class="nav-side-menu">
-            <div th:insert="fragments/sidenav :: sidenav">The Static Sidenav</div>
+            <div sec:authorize="hasRole('ROLE_ESTIMATOR')">
+                <div th:insert="estimator/fragments/sidenav :: sidenav">The Static Sidenav</div>
+            </div>
+            <div sec:authorize="hasRole('ROLE_TRADER')">
+                <div th:insert="trader/fragments/sidenav :: sidenav">The Static Sidenav</div>
+            </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <div th:insert="admin/fragments/sidenav :: sidenav">The Static Sidenav</div>
+            </div>
+            <div sec:authorize="hasRole('ROLE_MANAGER')">
+                <div th:insert="manager/sidenav :: sidenav">The Static Sidenav</div>
+            </div>
         </nav>
+
         <main>
             <div layout:fragment="content" class="main container">The Static Content</div>
         </main>

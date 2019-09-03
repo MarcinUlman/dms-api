@@ -2,8 +2,12 @@ package dev.ulman.dms.dao;
 
 import dev.ulman.dms.model.User;
 
-public interface UserDao {
-    User getUserByUsername(String username);
+import java.util.List;
 
-    void addUser(User user);
+public interface UserDao {
+
+   List<User> getAllUsers();
+   User getUserByUsername(String username);
+
+   void addUser(User user);
 }

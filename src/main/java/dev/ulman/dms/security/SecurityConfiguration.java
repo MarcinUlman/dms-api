@@ -36,8 +36,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/api/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN")
+                .antMatchers("/estimator/**").hasAnyRole("ESTIMATOR", "MANAGER", "ADMIN")
+                .antMatchers("/trader/**").hasAnyRole("TRADER", "MANAGER", "ADMIN")
                 .and()
-//                .httpBasic(); //popup basic login form
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
