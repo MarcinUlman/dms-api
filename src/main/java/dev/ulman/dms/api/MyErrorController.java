@@ -20,7 +20,6 @@ public class MyErrorController implements ErrorController {
 
         if (status != null){
             Integer statusCode = Integer.valueOf(status.toString());
-            System.out.println(statusCode);
             if (statusCode == HttpStatus.NOT_FOUND.value())
                 return "error/error-404";
             else if (statusCode == HttpStatus.FORBIDDEN.value())
@@ -28,7 +27,6 @@ public class MyErrorController implements ErrorController {
             else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value())
                 return "error/error-500";
         }
-        System.out.println(status);
         return "error/error";
     }
 
