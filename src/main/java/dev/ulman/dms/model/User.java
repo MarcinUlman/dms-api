@@ -75,6 +75,10 @@ public class User {
         return new ArrayList<>();
     }
 
+    public String getRoles() {
+        return roles;
+    }
+
     public void setRoles(String roles) {
         this.roles = roles;
     }
@@ -83,6 +87,10 @@ public class User {
         if (permissions.length() > 0)
             return Arrays.asList(this.permissions.split(","));
         return new ArrayList<>();
+    }
+
+    public String getPermissions() {
+        return permissions;
     }
 
     public void setPermissions(String permissions) {

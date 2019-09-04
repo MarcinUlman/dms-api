@@ -79,5 +79,30 @@ public class UserDaoImp implements UserDao {
         session.close();
     }
 
+    @Override
+    public void updateUser(long id, User incomingUser) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        incomingUser.setId(id);
+        session.saveOrUpdate(incomingUser);
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
+    public void deleteUser(long id) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        User user = session.get(User.class, id);
+        if (user != null)
+            session.delete(user);
+
+        transaction.commit();
+        session.close();
+    }
+
 
 }
