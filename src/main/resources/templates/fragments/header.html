@@ -19,9 +19,8 @@
                 <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                      aria-labelledby="navbarDropdownMenuLink-55">
                     <span class="dropdown-item" sec:authentication="name">Static Bob</span>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="/logout" th:href="@{/logout}">Logout</a>
+                    <a class="dropdown-item" href="#" th:text="#{userMenu.profile}">Profile</a>
+                    <a class="dropdown-item" href="/logout" th:href="@{/logout}" th:text="#{userMenu.logout}">Logout</a>
                 </div>
             </li>
         </ul>

@@ -7,15 +7,37 @@
 
 <body>
     <div layout:fragment="content">
-        <table>
-            <tr><th>Id</th><th>Nazwa</th><th>Adres</th><th>Telefon</th><th>link</th></tr>
+        <table class="table table-sm table-hover table-dark">
+            <thead>
+                <th>Id</th>
+                <th th:text="#{tableThead.userList.username}">UserName</th>
+                <th th:text="#{tableThead.userList.employeeId}">Employee Id</th>
+                <th th:text="#{tableThead.userList.employeeName}">Employee Name</th>
+                <th th:text="#{tableThead.userList.active}">Active</th>
+                <th th:text="#{tableThead.userList.roles}">Roles</th>
+                <th th:text="#{tableThead.userList.permissions}">Permissions</th>
+            </thead>
             <tr th:each="user: ${users}">
-
                 <td>
-                    <span th:text="${user.id}">department id</span>
+                    <span th:text="${user.id}">user id</span>
                 </td>
                 <td>
-                    <span th:text="${user.username}">department name</span>
+                    <span th:text="${user.username}">user name</span>
+                </td>
+                <td>
+                    <span th:text="${user.employee.employeeId}">user employee i</span>
+                </td>
+                <td>
+                    <span th:text="${user.employee.name} + ' ' +${user.employee.surname}">user employee name</span>
+                </td>
+                <td>
+                    <span th:text="${user.active}">user activ</span>
+                </td>
+                <td>
+                    <span th:text="${user.roles}">user roles</span>
+                </td>
+                <td>
+                    <span th:text="${user.permissions}">user permissions</span>
                 </td>
             </tr>
         </table>
