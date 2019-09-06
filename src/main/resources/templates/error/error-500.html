@@ -12,9 +12,9 @@
             #500
         </h1>
         <h2 class="error-page">
-            I am sorry, something went wrong!
+            <span th:text="#{errormassage.500}">I am sorry, something went wrong!</span>
             <br>
-            <a href="#" class="backButton" onclick="history.back()">Go back!!</a>
+            <a href="#" class="backButton" th:text="#{errormessage.backbutton}" onclick="history.back()">Go back!!</a>
         </h2>
 </body>
 </html>

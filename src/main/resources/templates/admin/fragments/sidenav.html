@@ -7,18 +7,23 @@
 
 
 <div th:fragment="sidenav" class="container-fluid">
-    <div class="brand">Press Curing Control</div>
+    <div class="brand" th:text="#{adminMenu.title}">Admin menu</div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
     <div class="menu-list">
 
         <ul id="menu-content" class="menu-content collapse out">
             <li>
-                <a href="#">
-                    <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                <a th:href="@{/admin/users/}" href="admin/usersList.html">
+                    <i class="fa fa-dashboard fa-lg"></i> <span th:text="#{adminMenu.users}">Users</span>
                 </a>
             </li>
-
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard fa-lg"></i> <span th:text="#{adminMenu.logs}">Logs</span>
+                </a>
+            </li>
+<!--
             <li  data-toggle="collapse" data-target="#products" class="collapsed active">
                 <a href="#"><i class="fa fa-gift fa-lg"></i> Anlagenauswahl <span class="arrow"></span></a>
             </li>
@@ -63,7 +68,7 @@
                 <li>Betriebsarten</li>
             </ul>
 
-        </ul>
+        </ul> -->
     </div>
 </div>
 
