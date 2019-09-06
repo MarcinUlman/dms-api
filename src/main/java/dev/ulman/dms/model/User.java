@@ -23,7 +23,7 @@ public class User {
     private String roles = "";
     private String permissions = "";
 
-    @OneToOne
+    @OneToOne (fetch = FetchType.LAZY)
     private Employee employee;
 
     public User(String username, String password, String roles, String permissions, Employee employee) {

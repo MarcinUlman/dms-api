@@ -16,13 +16,13 @@ import java.util.List;
 
 @RequestMapping("admin/users")
 @Controller
-public class UserContorller {
+public class UserController {
 
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
 
     @Autowired
-    public UserContorller(PasswordEncoder passwordEncoder, UserService userService) {
+    public UserController(PasswordEncoder passwordEncoder, UserService userService) {
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
     }

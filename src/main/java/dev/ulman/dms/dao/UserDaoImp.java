@@ -1,6 +1,7 @@
 package dev.ulman.dms.dao;
 
 import dev.ulman.dms.model.User;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -41,6 +42,10 @@ public class UserDaoImp implements UserDao {
         Query<User> query = session.createQuery(criteriaQuery);
 
         List<User> users = query.getResultList();
+
+        for(User user : users) {
+            Hibernate.initialize(user.getEmployee());
+        }
 
         transaction.commit();
         session.close();
