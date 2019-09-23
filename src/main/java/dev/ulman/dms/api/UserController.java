@@ -4,13 +4,11 @@ package dev.ulman.dms.api;
 import dev.ulman.dms.model.User;
 import dev.ulman.dms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,20 @@ public class UserController {
         model.addAttribute("message", "User added");
 
         return getUserList(model);
+    }
+
+    @DeleteMapping(path = "{userId}")
+    public String deleteUser(Model model, @RequestParam(value = "userId", required = true) long id){
+        userService.deleteUser(id);
+
+        return getUserList(model);
+    }
+
+    @GetMapping(path = "/AddNewUser")
+    public String displayUserForm(Model model, @RequestParam (value="userId", defaultValue = "0") long id){
+        User fondedUser = userService.getUserByUsername("user");
+        if(id != 0)
+            model.addAttribute("user", fondedUser);
+        return "admin/userForm";
     }
 }

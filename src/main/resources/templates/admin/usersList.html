@@ -8,6 +8,19 @@
 <body>
     <div layout:fragment="content">
         <table class="table table-sm table-hover table-dark">
+            <caption style="caption-side: top">
+                <div class="row">
+                    <div class="col-sm-8"><h2 class="text-dark" th:text="#{tableTitle.userList}">List of Users</h2> </div>
+                    <div class="col-sm-4">
+                        <form>
+                            <button type="submit" class="btn btn-primary" formaction="/admin/users/AddNewUser" formmethod="get"
+                                    title="add" th:title="#{button.addNew.title}">
+                                <i class="fa fa-plus"></i><span th:text="#{button.addNew}"> Add New</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </caption>
             <thead>
                 <th>Id</th>
                 <th th:text="#{tableThead.userList.username}">UserName</th>
@@ -38,6 +51,18 @@
                 </td>
                 <td>
                     <span th:text="${user.permissions}">user permissions</span>
+                </td>
+                <td>
+                    <form>
+                        <button class="buttonInlist" formaction="/admin/users/AddNewUser" formmethod="get" type="submit"
+                                title="edit" th:title="#{button.edit.title}"
+                                name="userId" th:value="${user.id}" ><i class="fas fa-edit"></i></button><!--
+                        --><button class="buttonInlist" formaction="/admin/users/DeleteUser" formmethod="post" type="submit"
+                                title="delete" th:title="#{button.delete.title}"
+                                   name="userId" th:value="${user.id}"
+                                   onclick="return confirm('Are you sure you want to delete user?');"
+                                th:onclick="return confirm([[#{confirm.popup.deleteUser}]]);"><i class="fas fa-trash-alt"></i></button>
+                    </form>
                 </td>
             </tr>
         </table>

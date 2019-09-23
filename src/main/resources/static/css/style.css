@@ -5,6 +5,15 @@ body {
   background-color:#888888;
 }
 
+.buttonInlist{
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 2px;
+  margin: 0;
+}
+
 .backButton {
  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cbcbcb), color-stop(1, #bdbdbd));
  	background:-moz-linear-gradient(top, #cbcbcb 5%, #bdbdbd 100%);
