@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RequestMapping("api/contracts")
+@RequestMapping("contracts")
 @Controller
-public class ContractContoller {
+public class ContractController {
 
     private final ContractService contractService;
 
     @Autowired
-    public ContractContoller(ContractService contractService) {
+    public ContractController(ContractService contractService) {
         this.contractService = contractService;
     }
 
@@ -44,7 +44,7 @@ public class ContractContoller {
     }
 
     @DeleteMapping(path = "{id}")
-    public ResponseEntity<?> deleteContreact(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteContract(@PathVariable("id") long id){
         contractService.delete(id);
         return new ResponseEntity<>("Contract is no longer in the database", HttpStatus.NO_CONTENT);
     }

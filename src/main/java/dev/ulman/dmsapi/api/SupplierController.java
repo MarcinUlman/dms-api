@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RequestMapping("api/supplier")
+@RequestMapping("supplier")
 @Controller
 public class SupplierController {
 
@@ -48,7 +48,7 @@ public class SupplierController {
     }
 
     @DeleteMapping(path = "{id}")
-    public ResponseEntity<?> deleteSuplier(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteSupplier(@PathVariable("id") long id){
 
         supplierService.delete(id);
 
@@ -56,7 +56,7 @@ public class SupplierController {
     }
 
     @PutMapping(path = "{id}")
-    public ResponseEntity<?> updateSuppier(@PathVariable("id") long id, @RequestBody Supplier incomingSupplier){
+    public ResponseEntity<?> updateSupplier(@PathVariable("id") long id, @RequestBody Supplier incomingSupplier){
 
         supplierService.update(id, incomingSupplier);
 

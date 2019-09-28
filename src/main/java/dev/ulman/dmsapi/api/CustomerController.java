@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RequestMapping("api/customers")
+@RequestMapping("customers")
 @Controller
 public class CustomerController {
 
@@ -48,7 +48,7 @@ public class CustomerController {
    }
 
    @DeleteMapping(path = "{id}")
-    public ResponseEntity<?> deleteCustorem (@PathVariable("id") long id){
+    public ResponseEntity<?> deleteCustomer(@PathVariable("id") long id){
 
         customerService.delete(id);
 

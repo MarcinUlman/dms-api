@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RequestMapping("api/products")
+@RequestMapping("products")
 @Controller
 public class ProductController {
 

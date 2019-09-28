@@ -9,14 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("api/offers")
+@RequestMapping("offers")
 @Controller
-public class OfferConroller {
+public class OfferController {
 
     private final OfferService offerService;
 
     @Autowired
-    public OfferConroller(OfferService offerService) {
+    public OfferController(OfferService offerService) {
         this.offerService = offerService;
     }
 

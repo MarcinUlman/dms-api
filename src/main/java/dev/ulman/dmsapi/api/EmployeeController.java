@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RequestMapping("api/employees")
+@RequestMapping("employees")
 @Controller
-public class EmployeeContoller {
+public class EmployeeController {
 
     private final EmployeeService employeeService;
 
     @Autowired
-    public EmployeeContoller(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
@@ -63,20 +63,20 @@ public class EmployeeContoller {
     }
 
     @DeleteMapping(path = "{id}")
-    public ResponseEntity<?> deleteEmpleyee(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") long id){
         employeeService.delete(id);
 
         return new ResponseEntity<>("Employee is no longer in the database", HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(path = "traders/{id}")
-    public ResponseEntity<?> updeteTrader(@PathVariable("id") long id, @RequestBody Trader incomingEmployee){
+    public ResponseEntity<?> updateTrader(@PathVariable("id") long id, @RequestBody Trader incomingEmployee){
         employeeService.updateTrader(id, incomingEmployee);
         return new ResponseEntity<Employee>(incomingEmployee, HttpStatus.OK);
     }
 
     @PutMapping(path = "estimators/{id}")
-    public ResponseEntity<?> updeteEstimator(@PathVariable("id") long id, @RequestBody Estimator incomingEmployee){
+    public ResponseEntity<?> updateEstimator(@PathVariable("id") long id, @RequestBody Estimator incomingEmployee){
         employeeService.updateEstimator(id, incomingEmployee);
         return new ResponseEntity<Employee>(incomingEmployee, HttpStatus.OK);
     }
